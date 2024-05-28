@@ -62,9 +62,9 @@ class ImageController extends Controller
     {
         if ($request->hasFile('photo'))
         {
-            if (isset($category_of_product->photo))
+            if (isset($image->photo))
             {
-                Storage::delete($category_of_product->photo);
+                Storage::delete($image->photo);
             }
 
             $name = $request->file('photo')->getClientOriginalName();
