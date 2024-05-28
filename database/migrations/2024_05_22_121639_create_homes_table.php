@@ -19,7 +19,11 @@ return new class extends Migration
             $table->text('short_content_uz')->nullable();
             $table->text('short_content_ru')->nullable();
             $table->text('short_content_en')->nullable();
-            $table->string('photo')->nullable();
+            $table->string('first_photo')->nullable();
+            $table->string('second_photo')->nullable();
+            $table->string('third_photo')->nullable();
+            $table->string('fourth_photo')->nullable();
+            $table->string('fifth_photo')->nullable();
             $table->timestamps();
         });
     }

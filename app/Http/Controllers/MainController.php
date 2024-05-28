@@ -24,11 +24,7 @@ class MainController extends Controller
 
     public function index()
     {
-        $first_photo = Home::latest()->first();
-        $second_photo = Home::latest()->skip(1)->first();
-        $third_photo = Home::latest()->skip(2)->first();
-        $fourth_photo = Home::latest()->skip(3)->first();
-        $fifth_photo = Home::latest()->skip(4)->first();
+        $homes = Home::latest()->take(1)->get();
         $abouts = About::latest()->take(1)->get();
         $photos = CategoryOfProduct::orderBy('created_at', 'desc')->take(3)->get(['id', 'name_uz', 'name_ru', 'name_en', 'photo', 'category_id']);
         $teams = Team::latest()->take(2)->get();
@@ -45,11 +41,7 @@ class MainController extends Controller
         
         return view('index', compact(
             'abouts',
-            'first_photo',
-            'second_photo',
-            'third_photo',
-            'fourth_photo',
-            'fifth_photo',
+            'homes',
             'contacts',
             'actives',
             'links',

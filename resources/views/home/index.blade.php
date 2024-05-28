@@ -23,7 +23,7 @@
                                     <td>{{ $home->id }}</td>
                                     <td>{{ $home->title_uz }}</td>
                                     <td>{{ $home->short_content_uz }}</td>
-                                    <td><img src="{{ asset( 'storage/' . $home->photo ) }}" alt="" style="width: 100px;"></td>
+                                    <td><img src="{{ asset( 'storage/' . $home->first_photo ) }}" alt="" style="width: 100px;"></td>
                                     <td>
                                         <div class="d-flex tools">
                                             <a href="{{ route('home.show', ['home' => $home->id]) }}" class="mx-3"><i class="fa fa-eye"></i></a>

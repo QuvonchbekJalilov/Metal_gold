@@ -56,9 +56,33 @@
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group form-control mb-3 pb-2">
-                        <input name="photo" type="file" class="input-group m-2" id="subject"/>
+                        <input name="first_photo" type="file" class="input-group m-2" id="subject"/>
                     </div>
-                    @error('photo')
+                    @error('first_photo')
+                    <label for="if" class="text-danger">faylni yuklashni unutdingiz3</label>
+                    @enderror
+                    <div class="control-group form-control mb-3 pb-2">
+                        <input name="second_photo" type="file" class="input-group m-2" id="subject"/>
+                    </div>
+                    @error('second_photo')
+                    <label for="if" class="text-danger">faylni yuklashni unutdingiz3</label>
+                    @enderror
+                    <div class="control-group form-control mb-3 pb-2">
+                        <input name="third_photo" type="file" class="input-group m-2" id="subject"/>
+                    </div>
+                    @error('third_photo')
+                    <label for="if" class="text-danger">faylni yuklashni unutdingiz3</label>
+                    @enderror
+                    <div class="control-group form-control mb-3 pb-2">
+                        <input name="fourth_photo" type="file" class="input-group m-2" id="subject"/>
+                    </div>
+                    @error('fourth_photo')
+                    <label for="if" class="text-danger">faylni yuklashni unutdingiz3</label>
+                    @enderror
+                    <div class="control-group form-control mb-3 pb-2">
+                        <input name="fifth_photo" type="file" class="input-group m-2" id="subject"/>
+                    </div>
+                    @error('fifth_photo')
                     <label for="if" class="text-danger">faylni yuklashni unutdingiz3</label>
                     @enderror
                     <div class="control-group">

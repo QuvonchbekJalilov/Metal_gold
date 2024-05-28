@@ -18,6 +18,10 @@ class Home extends Model
         'short_content_uz',
         'short_content_ru',
         'short_content_en',
-        'photo',
+        'first_photo',
+        'second_photo',
+        'third_photo',
+        'fourth_photo',
+        'fifth_photo',
     ];
 }

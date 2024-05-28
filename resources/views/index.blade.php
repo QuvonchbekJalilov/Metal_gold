@@ -84,11 +84,13 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
             <div class="row">
                 <div class="col-sm-12">
                     <div class="slide_img beforelsiee xlnone d-xl-none">
-                        <img src="{{ asset('storage/' . $first_photo->photo) }}" class="img-1" alt="slide_shape_01">
-                        <img src="{{ asset('storage/' . $second_photo->photo) }}" class="img-2 position-absolute" alt="slide_shape_02">
-                        <img src="{{ asset('storage/' . $third_photo->photo) }}" class="img-3 position-absolute" alt="slide_shape_03">
-                        <img src="{{ asset('storage/' . $fourth_photo->photo) }}" class="img-4 position-absolute" alt="slide_shape_04">
-                        <img src="{{ asset('storage/' . $fifth_photo->photo) }}" class="img-5 position-absolute" alt="slide_image">
+                        @foreach($homes as $home)
+                            <img src="{{ asset('storage/' . $home->first_photo) }}" class="img-1" alt="slide_shape_01">
+                            <img src="{{ asset('storage/' . $home->second_photo) }}" class="img-2 position-absolute" alt="slide_shape_02">
+                            <img src="{{ asset('storage/' . $home->third_photo) }}" class="img-3 position-absolute" alt="slide_shape_03">
+                            <img src="{{ asset('storage/' . $home->fourth_photo) }}" class="img-4 position-absolute" alt="slide_shape_04">
+                            <img src="{{ asset('storage/' . $home->fifth_photo) }}" class="img-5 position-absolute" alt="slide_image">
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-8 col-xl-6">
@@ -96,10 +98,12 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                         <h4 class="animated wow animate__fadeIn" data-animation="fadeInUp" data-delay="2s" data-wow-duration="2s">{{__('words.metal')}}
                             <span>{{__('words.company')}}</span>
                         </h4>
-                        <h2 class="wow animate__fadeIn" data-animation="fadeInUp" data-delay="2.5s" data-wow-duration="2.5s">{{ $first_photo['title_' . $lang] }}</h2>
-                        <p class="wow animate__fadeIn" data-animation="fadeInUp" data-delay="3s" data-wow-duration="3s">
-                            {{ $first_photo['short_content_' . $lang] }}
-                        </p>
+                        @foreach($homes as $home)
+                            <h2 class="wow animate__fadeIn" data-animation="fadeInUp" data-delay="2.5s" data-wow-duration="2.5s">{{ $home['title_' . $lang] }}</h2>
+                            <p class="wow animate__fadeIn" data-animation="fadeInUp" data-delay="3s" data-wow-duration="3s">
+                                {{ $home['short_content_' . $lang] }}
+                            </p>
+                        @endforeach
                         <div class="site_button site_button-two">
                             <a class="cmn_btn slide_btn slide_btn_01 " href="{{ route('product')}}">{{__('words.product')}}<i class="fas fa-chevron-right"></i></a>
                             <a class="cmn_btn cmn_outline " href="{{ route('category')}}"><span>{{__('words.category')}}</span><i class="fas fa-chevron-right"></i>
@@ -111,11 +115,13 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                 <div class="col-md-12 col-lg-4 col-xl-5 offset-xl-1 text-end">
                     <div class="slide_img beforelsiee DisplayNone">
                         <span class="circle-shape-design"></span>
-                        <img src="{{ asset('storage/' . $first_photo->photo) }}" class="img-1" alt="slide_shape_01">
-                        <img src="{{ asset('storage/' . $second_photo->photo) }}" class="img-2 position-absolute" alt="slide_shape_02">
-                        <img src="{{ asset('storage/' . $third_photo->photo) }}" class="img-3 position-absolute" alt="slide_shape_03">
-                        <img src="{{ asset('storage/' . $fourth_photo->photo) }}" class="img-4 position-absolute" alt="slide_shape_04">
-                        <img src="{{ asset('storage/' . $fifth_photo->photo) }}" class="img-5 position-absolute" alt="slide_image">
+                        @foreach($homes as $home)
+                            <img src="{{ asset('storage/' . $home->first_photo) }}" class="img-1" alt="slide_shape_01">
+                            <img src="{{ asset('storage/' . $home->second_photo) }}" class="img-2 position-absolute" alt="slide_shape_02">
+                            <img src="{{ asset('storage/' . $home->third_photo) }}" class="img-3 position-absolute" alt="slide_shape_03">
+                            <img src="{{ asset('storage/' . $home->fourth_photo) }}" class="img-4 position-absolute" alt="slide_shape_04">
+                            <img src="{{ asset('storage/' . $home->fifth_photo) }}" class="img-5 position-absolute" alt="slide_image">
+                        @endforeach
                     </div>
                 </div>
             </div>
