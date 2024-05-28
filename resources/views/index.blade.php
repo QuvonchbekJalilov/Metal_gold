@@ -371,7 +371,7 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
             <div class="row custom-center">
                 <div class="col-xl-8">
                     <div class="shoot_box">
-                        
+
                         <div class="vd-grid">
                             <iframe width="695" height="391" src="https://www.youtube.com/embed/Yrokj0SqRJA" title="Какой Метал Самый Дорогой? Платина Золото Серебро Медь" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
