@@ -20,7 +20,7 @@ class Language
         if (session() -> has('lang')){
             $lang = session('lang');
         } else {
-            $lang = 'uz';
+            $lang = 'en';
         }
 
         App::setLocale($lang);

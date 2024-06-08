@@ -251,7 +251,7 @@ a.outline_two.cmn_btn span, a.outline_two.cmn_btn i {
         top: 150px;
         right: -150px;
         background: #fff;
-        padding: 10px 30px;
+        padding: 10px 20px;
         animation: 20s float-bob-x infinite;
     }
     img.img-5 {
@@ -2431,7 +2431,7 @@ img.preview_shape_03 {
     .wrap-work {
         flex-wrap: wrap;
         text-align: center;
-        justify-content: center;
+        /* justify-content: center; */
         align-items: center;
     }
     .d-flex.work_process_card.remove-pad-lef {

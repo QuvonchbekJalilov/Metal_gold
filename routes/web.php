@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
@@ -54,8 +55,11 @@ Route::middleware(['checkRole:admin', 'auth'])->group(function () {
         Route::resource('/team', TeamController::class);
         Route::get('/image', [ImageController::class, 'index'])->name('image-index');
         Route::resource('/image', ImageController::class);
-        Route::get('/category_of_product', [CategoryOfProductController::class, 'index'])->name('category-product-index');
+
+        Route::post('/category_of_product', [CategoryOfProductController::class, 'index'])->name('category_of_product-index');
+
         Route::resource('/category_of_product', CategoryOfProductController::class);
+
         Route::get('/commit', [CommitController::class, 'index'])->name('commit-index');
         Route::resource('/commit', CommitController::class);
         Route::get('/active_client', [ActiveClientController::class, 'index'])->name('active_client-index');
@@ -70,6 +74,9 @@ Route::middleware(['checkRole:admin', 'auth'])->group(function () {
         Route::resource('/blog', BlogController::class);
         Route::get('/profile', [UserController::class, 'index'])->name('user-index');
         Route::resource('/profile', UserController::class);
+        Route::resource('orders', OrderController::class);
+        Route::post('/orders/{order}/update-status', [OrderController::class, 'updateStatus'])->name('orders.update-status');
+        Route::get('/search', [CategoryController::class, 'search'])->name('search');
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     });
 });
@@ -80,8 +87,8 @@ Route::middleware(['checkRole:admin', 'auth'])->group(function () {
 | Barcha foydalanuvshilar ko'raoladigan qism
 |-------------------------------------------------------------
 */
-
 Route::get('/', [MainController::class, 'index'])->name('index');
+
 Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/blog', [MainController::class, 'blog'])->name('blog');
 Route::get('/blog/{blog}', [MainController::class, 'single_blog'])->name('single_blog');
@@ -90,7 +97,8 @@ Route::get('/product', [MainController::class, 'product'])->name('product');
 Route::get('/category', [MainController::class, 'category'])->name('category');
 Route::get('/product/{product}', [MainController::class, 'products'])->name('products');
 
-Route::get('/{lang}', function ($lang){
+Route::post('orders.store', [OrderController::class, 'store'])->name('orders.store');
+Route::get('/{lang}', function ($lang) {
 
     session(['lang' => $lang]);
 

@@ -14,8 +14,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $team = Team::all();
-        return view('team.index')->with('teams', $team);
+        $team = Team::all()->sortDesc();
+        return view('admin.team.index')->with('teams', $team);
     }
 
     /**
@@ -23,7 +23,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('team.create')->with([
+        return view('admin.team.create')->with([
             'teams' => Team::all(),
         ]);
     }
@@ -60,14 +60,14 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        return view('team.show')->with([
-            'teams' => $team,
+        return view('admin.team.show')->with([
+            'team' => $team,
         ]);
     }
 
     public function edit(Team $team)
     {
-        return view('team.edit')->with(['teams' => $team]);
+        return view('admin.team.edit')->with(['team' => $team]);
     }
 
     /**
@@ -79,9 +79,9 @@ class TeamController extends Controller
         {
             if ($request->hasFile('photo'))
             {
-                if (isset($category_of_product->photo))
+                if (isset($team->photo))
                 {
-                    Storage::delete($category_of_product->photo);
+                    Storage::delete($team->photo);
                 }
 
                 $name = $request->file('photo')->getClientOriginalName();
@@ -111,6 +111,10 @@ class TeamController extends Controller
     public function destroy(Team $team)
     {
         $team->delete();
+        if (isset($team->photo))
+        {
+            Storage::delete($team->photo);
+        }
         return redirect()->route('team.index');
     }
 }

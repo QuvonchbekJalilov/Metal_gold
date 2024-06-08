@@ -10877,13 +10877,13 @@ div#loading-center-absolute img {
 }
 
 #quote_btn {
-  background-color: #438FF9;
+  background-color: #FF7300;
   padding: 14px 33px !important;
   display: block;
   border-radius: 50px;
   color: #ffffff !important;
   text-transform: capitalize;
-  box-shadow: 0px 6px 15px #438FF973;
+  box-shadow: 0px 6px 15px #c89367;
   -webkit-transition: all 0.5s ease-out 0s;
   -moz-transition: all 0.5s ease-out 0s;
   -ms-transition: all 0.5s ease-out 0s;
@@ -11485,7 +11485,7 @@ div.sidebar__menu--social a {
 .wrap-work {
   flex-wrap: wrap;
   text-align: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .service_two__content a {
@@ -11942,7 +11942,7 @@ img.img-3 {
   top: 150px;
   right: -80px;
   background: #fff;
-  padding: 10px 30px;
+  padding: 10px 20px;
   animation: 20s float-bob-x infinite;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 10px 30px #438FF93B;
@@ -12002,7 +12002,7 @@ img.img-5 {
 }
 
 .cmn_btn {
-  background-color: #438FF9;
+  background-color: #FF7300;
   padding: 12px 50px !important;
   border-radius: 50px;
   color: #ffffff !important;
@@ -15954,7 +15954,53 @@ img.clients_11 {
   border-radius: 15px;
   border: 2px solid #2B1B9A;
 }
+/*=========================ismoil===========================*/
 
+@media (min-width: 720px) {
+    .category1{
+        display: none;
+    }
+}
+@media (max-width: 720px) {
+    .category2{
+        display: none;
+    }
+}
+
+
+
+
+.single_price1 {
+    background: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.4) -10px 12px 54px -51px;
+    margin-bottom: 23px;
+    padding: 10px 20px;
+    display: block;
+    position: relative;
+    align-items: center;
+    text-decoration: none;
+    z-index: 1;
+    overflow: hidden;
+    flex-wrap: wrap;
+    -webkit-transition: all 0.5s ease-out 0s;
+    -moz-transition: all 0.5s ease-out 0s;
+    -ms-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+    transition: all 0.5s ease-out 0s;
+    border-radius: 10px;
+}
+.single_price1:hover {
+    background-color: #6c757d;
+    -webkit-transition: all 0.2s ease-out 0s;
+    -moz-transition: all 0.2s ease-out 0s;
+    -ms-transition: all 0.2s ease-out 0s;
+    -o-transition: all 0.2s ease-out 0s;
+    transition: all 0.2s ease-out 0s;
+    color: #ffffff;
+}
+
+
+/*-----------------------------------------------------------------------*/
 .single_price {
   background: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.4) -10px 12px 54px -51px;

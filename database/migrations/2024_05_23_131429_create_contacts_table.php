@@ -16,6 +16,7 @@ return new class extends Migration
             $table->text('title_uz')->nullable();
             $table->text('title_ru')->nullable();
             $table->text('title_en')->nullable();
+            $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->timestamps();
         });

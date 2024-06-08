@@ -13,18 +13,32 @@ class CategoryOfProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $category_of_product = CategoryOfProduct::all();
-        return view('category_of_product.index')->with('products', $category_of_product);
-    }
+
+
+
+     public function index(Request $request)
+     {
+         $productQuery = CategoryOfProduct::query();
+         $categories = Category::all();
+     
+         if ($request->category_id && $request->category_id !== 'all') {
+             $productQuery->where('category_id', $request->category_id)->orderBy('id', 'desc')->paginate(20);
+         }
+     
+         $category_of_product = $productQuery->orderBy('id', 'desc')->paginate(20);
+     
+         return view('admin.category_of_product.index', compact('categories', 'category_of_product', 'request'));
+     }
+     
+
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('category_of_product.create')->with([
+        return view('admin.category_of_product.create')->with([
             'products' => CategoryOfProduct::all(),
             'populars' => Popular::all(),
             'categories' => Category::all(),
@@ -41,21 +55,19 @@ class CategoryOfProductController extends Controller
             $path = $request->file('photo')->storeAs('post_photo', $name);
         }
 
-        $category_ids = json_encode($request->category_id);
 
         CategoryOfProduct::create([
+            'category_id' => $request->category_id,
             'type_id' => $request->type_id,
-            'category_id' => $category_ids,
-            'title_uz' => $request->title_uz,
-            'title_ru' => $request->title_ru,
-            'title_en' => $request->title_en,
-            'short_content_uz' => $request->short_content_uz,
-            'short_content_ru' => $request->short_content_ru,
-            'short_content_en' => $request->short_content_en,
             'name_uz' => $request->name_uz,
             'name_ru' => $request->name_ru,
             'name_en' => $request->name_en,
-            'photo' => $path ?? null
+            'size' => $request->size,
+            'manufacturer' => $request->manufacturer,
+            'tonna_metr' => $request->tonna_metr,
+            'metr_tonna' => $request->metr_tonna,
+            'price' => $request->price,
+            'photo' => $path ?? null,
         ]);
 
         return redirect()->route('category_of_product.index');
@@ -66,8 +78,8 @@ class CategoryOfProductController extends Controller
      */
     public function show(CategoryOfProduct $category_of_product)
     {
-        return view('category_of_product.show')->with([
-            'products' => $category_of_product,
+        return view('admin.category_of_product.show')->with([
+            'product' => $category_of_product,
         ]);
     }
 
@@ -75,7 +87,7 @@ class CategoryOfProductController extends Controller
     {
         $categories = Category::all();
         $populars = Popular::all();
-        return view('category_of_product.edit')->with(['products' => $category_of_product, 'categories' => $categories, 'populars' => $populars]);
+        return view('admin.category_of_product.edit')->with(['product' => $category_of_product, 'categories' => $categories, 'populars' => $populars]);
     }
 
     /**
@@ -83,35 +95,32 @@ class CategoryOfProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'category_id' => 'required|array'
-        ]);
+
 
         $categoryOfProduct = CategoryOfProduct::findOrFail($id);
 
         if ($request->hasFile('photo')) {
-            $name = $request->file('photo')->getClientOriginalName();
-            $path = $request->file('photo')->storeAs('post_photo', $name);
             if ($categoryOfProduct->photo) {
                 Storage::delete('post_photo/' . $categoryOfProduct->photo);
             }
+            $name = $request->file('photo')->getClientOriginalName();
+            $path = $request->file('photo')->storeAs('post_photo', $name);
             $categoryOfProduct->photo = $path;
         }
 
-        $category_ids = json_encode($request->category_id);
 
         $categoryOfProduct->update([
+            'category_id' => $request->category_id,
             'type_id' => $request->type_id,
-            'category_id' => $category_ids, 
-            'title_uz' => $request->title_uz,
-            'title_ru' => $request->title_ru,
-            'title_en' => $request->title_en,
-            'short_content_uz' => $request->short_content_uz,
-            'short_content_ru' => $request->short_content_ru,
-            'short_content_en' => $request->short_content_en,
             'name_uz' => $request->name_uz,
             'name_ru' => $request->name_ru,
-            'name_en' => $request->name_en
+            'name_en' => $request->name_en,
+            'size' => $request->size,
+            'manufacturer' => $request->manufacturer,
+            'tonna_metr' => $request->tonna_metr,
+            'metr_tonna' => $request->metr_tonna,
+            'price' => $request->price,
+            'photo' => $path ?? $categoryOfProduct->photo,
         ]);
 
         return redirect()->route('category_of_product.index');
@@ -122,9 +131,12 @@ class CategoryOfProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CategoryOfProduct $category_of_product)
+    public function destroy(CategoryOfProduct $categoryOfProduct)
     {
-        $category_of_product->delete();
+        $categoryOfProduct->delete();
+        if ($categoryOfProduct->photo) {
+            Storage::delete('post_photo/' . $categoryOfProduct->photo);
+        }
         return redirect()->route('category_of_product.index');
     }
 }

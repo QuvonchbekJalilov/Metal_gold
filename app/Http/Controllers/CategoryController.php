@@ -14,8 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        return view('category.index')->with('categories', $category);
+        $category = Category::all()->sortDesc();
+        return view('admin.category.index')->with('categories', $category);
     }
 
     /**
@@ -23,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create')->with([
+        return view('admin.category.create')->with([
             'categories' => Category::all(),
         ]);
     }
@@ -44,11 +44,6 @@ class CategoryController extends Controller
             'name_uz' => $request->name_uz,
             'name_ru' => $request->name_ru,
             'name_en' => $request->name_en,
-            'size' => $request->size,
-            'theory' => $request->theory,
-            'manufacturer' => $request->manufacturer,
-            'unit' => $request->unit,
-            'price' => $request->price,
             'photo' => $path ?? null,
         ]);
 
@@ -60,14 +55,14 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('category.show')->with([
-            'categories' => $category,
+        return view('admin.category.show')->with([
+            'category' => $category,
         ]);
     }
 
     public function edit(Category $category)
     {
-        return view('category.edit')->with(['categories' => $category]);
+        return view('admin.category.edit')->with(['category' => $category]);
     }
 
     /**
@@ -90,15 +85,10 @@ class CategoryController extends Controller
             'name_uz' => $request->name_uz,
             'name_ru' => $request->name_ru,
             'name_en' => $request->name_en,
-            'size' => $request->size,
-            'theory' => $request->theory,
-            'manufacturer' => $request->manufacturer,
-            'unit' => $request->unit,
-            'price' => $request->price,
             'photo' => $path ?? $category->photo,
         ]);
 
-        return redirect()->route('category.index', ['categories' => $category->id]);
+        return redirect()->route('categories.index', ['categories' => $category->id]);
     }
 
 
@@ -112,6 +102,6 @@ class CategoryController extends Controller
         {
             Storage::delete($category->photo);
         }
-        return redirect()->route('category.index');
+        return redirect()->back();
     }
 }

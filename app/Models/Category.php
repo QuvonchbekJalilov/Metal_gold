@@ -15,11 +15,6 @@ class Category extends Model
       'name_uz',
       'name_ru',
       'name_en',
-      'size',
-      'theory',
-      'manufacturer',
-      'unit',
-      'price',
       'photo',
     ];
 

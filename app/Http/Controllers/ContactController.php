@@ -13,8 +13,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contact = Contact::all();
-        return view('contact.index')->with('contacts', $contact);
+        $contact = Contact::all()->sortDesc();
+        return view('admin.contact.index')->with('contacts', $contact);
     }
 
     /**
@@ -22,7 +22,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('contact.create')->with([
+        return view('admin.contact.create')->with([
             'contacts' => Contact::all(),
         ]);
     }
@@ -37,6 +37,7 @@ class ContactController extends Controller
             'title_uz' => $request->title_uz,
             'title_ru' => $request->title_ru,
             'title_en' => $request->title_en,
+            'email' => $request->email,
             'phone_number' => $request->phone_number,
         ]);
 
@@ -49,7 +50,7 @@ class ContactController extends Controller
 
     public function edit(Contact $contact)
     {
-        return view('contact.edit')->with(['contacts' => $contact]);
+        return view('admin.contact.edit')->with(['contact' => $contact]);
     }
 
     /**
@@ -62,6 +63,7 @@ class ContactController extends Controller
             'title_uz' => $request->title_uz,
             'title_ru' => $request->title_ru,
             'title_en' => $request->title_en,
+            'email' => $request->email,
             'phone_number' => $request->phone_number,
         ]);
 

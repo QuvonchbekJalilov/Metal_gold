@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
-            $table->string('link')->nullable();
-            $table->string('telegram')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('instagram')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('youtube')->nullable();
-            $table->string('photo')->nullable();
+            $table->text('link')->nullable();
+            $table->text('telegram')->nullable();
+            $table->text('twitter')->nullable();
+            $table->text('instagram')->nullable();
+            $table->text('facebook')->nullable();
+            $table->text('youtube')->nullable();
+            $table->text('photo')->nullable();
             $table->timestamps();
         });
     }

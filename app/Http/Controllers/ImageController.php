@@ -13,8 +13,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $image = Image::all();
-        return view('image.index')->with('images', $image);
+        $image = Image::all()->sortDesc();
+        return view('admin.image.index')->with('images', $image);
     }
 
     /**
@@ -22,7 +22,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        return view('image.create')->with([
+        return view('admin.image.create')->with([
             'images' => Image::all(),
         ]);
     }
@@ -52,7 +52,7 @@ class ImageController extends Controller
 
     public function edit(Image $image)
     {
-        return view('image.edit')->with(['images' => $image]);
+        return view('admin.image.edit')->with(['images' => $image]);
     }
 
     /**
@@ -62,9 +62,9 @@ class ImageController extends Controller
     {
         if ($request->hasFile('photo'))
         {
-            if (isset($category_of_product->photo))
+            if (isset($image->photo))
             {
-                Storage::delete($category_of_product->photo);
+                Storage::delete($image->photo);
             }
 
             $name = $request->file('photo')->getClientOriginalName();
@@ -84,6 +84,10 @@ class ImageController extends Controller
     public function destroy(Image $image)
     {
         $image->delete();
+        if (isset($image->photo))
+        {
+            Storage::delete($image->photo);
+        }
         return redirect()->route('image.index');
     }
 }

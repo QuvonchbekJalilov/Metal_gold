@@ -14,8 +14,8 @@ class ActiveClientController extends Controller
      */
     public function index()
     {
-        $about = ActiveClient::all();
-        return view('active.index')->with('active_clients', $about);
+        $about = ActiveClient::all()->sortDesc();
+        return view('admin.active.index')->with('active_clients', $about);
     }
 
     /**
@@ -23,7 +23,7 @@ class ActiveClientController extends Controller
      */
     public function create()
     {
-        return view('active.create')->with([
+        return view('admin.active.create')->with([
             'active_clients' => ActiveClient::all(),
         ]);
     }
@@ -48,14 +48,14 @@ class ActiveClientController extends Controller
      */
     public function show(ActiveClient $active_client)
     {
-        return view('active.show')->with([
+        return view('admin.active.show')->with([
             'active_clients' => $active_client,
         ]);
     }
 
     public function edit(ActiveClient $active_client)
     {
-        return view('active.edit')->with(['active_clients' => $active_client]);
+        return view('admin.active.edit')->with(['activeClient' => $active_client]);
     }
 
     /**

@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255)->nullable();
-            $table->string('title_uz', 255)->nullable();
-            $table->string('title_ru', 255)->nullable();
-            $table->string('title_en', 255)->nullable();
-            $table->string('telegram', 255)->nullable();
-            $table->string('instagram', 255)->nullable();
-            $table->string('facebook', 255)->nullable();
-            $table->string('youtube', 255)->nullable();
-            $table->string('photo', 255)->nullable();
+            $table->text('name')->nullable();
+            $table->text('title_uz')->nullable();
+            $table->text('title_ru')->nullable();
+            $table->text('title_en')->nullable();
+            $table->text('telegram')->nullable();
+            $table->text('instagram')->nullable();
+            $table->text('facebook')->nullable();
+            $table->text('youtube')->nullable();
+            $table->text('photo')->nullable();
             $table->timestamps();
         });
     }

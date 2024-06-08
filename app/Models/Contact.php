@@ -15,6 +15,7 @@ class Contact extends Model
       'title_uz',
       'title_ru',
       'title_en',
+      'email',
       'phone_number',
     ];
 }

@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        $admins = User::all();
+        $admins = User::all()->sortDesc();
         return view('index')->with('admins', $admins);
     }
     public function auth()
