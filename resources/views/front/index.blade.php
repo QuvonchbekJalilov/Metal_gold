@@ -255,7 +255,7 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                     <div class="shoot_card before_shoot_01 wow animate__fadeIn" data-animation="fadeInUp" data-delay="2.5s" data-wow-duration="1s">
                         <div class="shoot_icon">
                             <img src="./assets/img/video/vd-or-2.png" alt="">
-                            <h5>OUR TRUSTED <br> ACTIVE CLIENTS</h5>
+                            <h5>{{__('words.trustClient')}}</h5>
                         </div>
                         <div class="shoot_count_1">
                             <h2>{{ $active->active_client }}+</h2>
@@ -264,8 +264,7 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                     <div class="shoot_card before_shoot_02 wow animate__fadeIn" data-animation="fadeInUp" data-delay="2.5s" data-wow-duration="2s">
                         <div class="shoot_icon">
                             <img src="./assets/img/video/ach-icon2.png" alt="">
-                            <h5>our Experienced <br>
-                                Members</h5>
+                            <h5>{{__('words.expStaff')}}</h5>
                         </div>
                         <div class="shoot_count_2">
                             <h2>{{ $active->experienced }}+</h2>
@@ -274,8 +273,7 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                     <div class="shoot_card before_shoot_03 wow animate__fadeIn" data-animation="fadeInUp" data-delay="2.5s" data-wow-duration="3s">
                         <div class="shoot_icon">
                             <img src="./assets/img/video/vd-or-1.png" alt="">
-                            <h5>Years Providing <br>
-                                Services</h5>
+                            <h5>{{__('words.yService')}}</h5>
                         </div>
                         <div class="shoot_count_3">
                             <h2>{{ $active->years_services }}+</h2>
@@ -429,7 +427,7 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
 
             const message = `A contact form submission has been received:\n\nName: ${full_name}\nPhone Number: ${phone_number_con}\nEmail: ${email}\nMessage ${send_message}`;
             const telegramBotToken = '7217681658:AAGzxilWkKBQqgxsA9Nte_T3viv4I7c2TkY'; // Bu yerga o'zingizning bot tokeningizni qo'ying
-            const telegramChatId = '6583641407'; // Bu yerga o'zingizning chat ID ni qo'ying
+            const telegramChatId = '-4236704302'; // Bu yerga o'zingizning chat ID ni qo'ying
 
             const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
             const data = {

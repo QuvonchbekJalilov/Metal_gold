@@ -34,8 +34,13 @@ class CategoryOfProduct extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+
     public function order()
     {
         return $this->belongsTo(Order::class);
     }
+
+
+    
 }

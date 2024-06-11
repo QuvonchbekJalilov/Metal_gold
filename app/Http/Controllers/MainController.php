@@ -156,6 +156,7 @@ class MainController extends Controller
         $contacts = Contact::latest()->take(1)->get();
         $category = Category::find($product);
         
+        
 
         return view('front.singleProduct', compact('products', 'links', 'contacts','category'));
     }

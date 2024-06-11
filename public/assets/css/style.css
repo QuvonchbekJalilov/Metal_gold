@@ -15943,8 +15943,8 @@ img.clients_11 {
 }
 .price p {
   display: inline-block;
-  height: 72px;
-  width: 72px;
+  height: 67px;
+  width: 126px !important;
   background: #ffffff;
   text-align: center;
   line-height: 72px;
@@ -16042,7 +16042,7 @@ img.clients_11 {
   padding-left: 100px;
   position: relative;
   flex: 1;
-  margin-right: 213px;
+
   padding-top: 16px;
 }
 .price_content::before {

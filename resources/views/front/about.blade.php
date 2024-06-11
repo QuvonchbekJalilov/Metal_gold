@@ -93,10 +93,8 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
             <div class="row">
                 <div class="col-md-12">
                     <div class="section_wrapper text-center mb-50">
-                        <h4 class="title">We're Serious About Helping <br>
-                            Small Businesses</h4>
-                        <p>Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium dolore mque laudantium
-                            totam <br> rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto</p>
+                        <h4 class="title"></h4>
+                        <p></p>
                     </div>
                 </div>
             </div>
@@ -142,7 +140,7 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
                                 <div class="col-md-9">
                                     <div class="shoot_icon">
                                         <img src="./assets/img/video/vd-or-1.png" alt="">
-                                        <h5>{{__('words.yearService')}}</h5>
+                                        <h5>{{__('words.yService')}}</h5>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -372,7 +370,7 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
 
                         const message = `A contact form submission has been received:\n\nName: ${last_name}\nPhone Number: ${phone_number_footer}`;
                         const telegramBotToken = '7217681658:AAGzxilWkKBQqgxsA9Nte_T3viv4I7c2TkY'; // Bu yerga o'zingizning bot tokeningizni qo'ying
-                        const telegramChatId = '6583641407'; // Bu yerga o'zingizning chat ID ni qo'ying
+                        const telegramChatId = '-4236704302'; // Bu yerga o'zingizning chat ID ni qo'ying
 
                         const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
                         const data = {

@@ -4,7 +4,17 @@ $lang = \Illuminate\Support\Facades\App::getLocale();
 ?>
 
 <x-layouts.main>
+    <style>
+        .w-94 {
+            width: 94%;
+        }
 
+        .aaa {
+            padding: 2px 10px !important;
+            border: 1px solid black;
+            border-radius: 8px;
+        }
+    </style>
     <div class="breadcrumb_area">
         <div class="breadcrumb-shapes">
             <img class="shape_01 position-absolute" src="/assets/img/slide/sl-1.png" alt="shape_01">
@@ -31,15 +41,8 @@ $lang = \Illuminate\Support\Facades\App::getLocale();
                     <div class="breadcrumb_content">
                         <h3>{{__('words.category')}}: {{$category['name_'.$lang]}}</h3>
                         <ul>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                                optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-                                obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-                                
-                            </p>
-                            <li><a href="{{ route('index')}}">Home<i class="far fa-chevron-right"></i></a></li>
+
+                            <li><a href="{{ route('index')}}">{{__('words.home')}}<i class="far fa-chevron-right"></i></a></li>
                             <li><a href="{{ route('product')}}">{{__('words.category')}}</a></li>
                         </ul>
                     </div>
@@ -49,417 +52,424 @@ $lang = \Illuminate\Support\Facades\App::getLocale();
     </div>
     <!-- breadcrumb_area end  -->
 
-
-
-
-    <div class="pricing_area mobile-res-mb py-3 category2" style="background-color: #f1f1f1">
+    <div class="pricing_area mb-120 mobile-res-mb">
         <div class="container">
-            <div class="row mx-2 mb-3">
-                <div class="col-md-12">
-                    <div class="d-flex animate__fadeIn" data-animation="fadeInUp" data-delay="3s" data-wow-duration="3s">
-                        <div class="col-md-2"><b>Name</b></div>
-                        <div class="col-md-2"><b>Size</b></div>
-                        <div class="col-md-2"><b>Metr -Tonna</b></div>
-                        <div class="col-md-2"><b>Tonna - Metr</b></div>
-                        <div class="col-md-2"><b>Manufacturer</b></div>
-                        <div class="col-md-2"><b>Price</b></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- pricing area start -->
-        <!-- Pricing area start -->
-        <div class="container mt-5">
+
             <div class="row align-items-center">
                 @foreach ($products as $product)
-                <div class="col-md-12 mb-3">
-                    <div class="card single_price1 animate__fadeIn" data-animation="fadeInUp" data-delay="3s" data-wow-duration="3s">
-                        <div class="card-body d-flex justify-content-between">
-                            <div class="col-md-2"><b>{{ $product->{'name_'.$lang} }}</b></div>
-                            <div class="col-md-2"><b>{{ $product->size}}</b></div>
-                            <div class="col-md-2"><b>{{ $product->metr_tonna}}</b></div>
-                            <div class="col-md-2"><b>{{ $product->tonna_metr}}</b></div>
-                            <div class="col-md-2"><b>{{ $product->manufacturer }}</b></div>
-                            <div class="col-md-2">
-                                <b>{{ $product->price}}</b>
-                                <button onclick="xarid({{ $product->id }})" type="button" class="btn btn-danger mx-2 xarid-btn" data-bs-toggle="modal" data-bs-target="#purchaseModal">Xarid</button>
+                <div class="col-md-12">
+                    <div class="single_price d-flex wow animate__fadeIn" data-animation="fadeInUp" data-delay="3s" data-wow-duration="3s">
+                        <div class="price_img">
+                            <img src="/storage/{{$category->photo}}" style="height: 120px;" alt="">
+                            <div class="price">
+                                <p>{{ $product->price/1000000 }} mln</p>
                             </div>
+                        </div>
+                        <div class="price_content">
+                            <h4>{{ $product->{'name_'.$lang} }}</h4>
+                            <div>
+                                <div class=" mt-2  justify-content-between d-flex">
+                                    <div class="row justify-content-between">
+                                        <div class="col-md-3">
+                                            <p class="  aaa"> Size: <br>{{ $product->size}}</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class=" aaa">Metr -Tonna: <br> {{ $product->metr_tonna}}</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class=" aaa"> Tonna - Metr: {{$product->tonna_metr}}</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class=" aaa"> Manufacturer: {{$product->manufacturer}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choose_plan">
+                            <button class="cmn_btn  increase_width   cmn_outline  effect" onclick="xarid({{ $product->id }})" type="button" data-bs-toggle="modal" data-bs-target="#purchaseModal"><span>Xarid</span><i class="fas fa-chevron-right"></i></button>
                         </div>
                     </div>
                 </div>
+
                 @endforeach
+                <!-- <a class="loading_more" href="#">loading more</a> -->
             </div>
         </div>
-        <!-- Pricing area end -->
+    </div>
 
-        <!-- Modal -->
-        <div class="modal fade" style="margin-top: 90px;" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="purchaseModalLabel">Select Option and Provide Details</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Display Product Name and Price -->
-                        <h4 id="productName"></h4>
-                        <p id="productPrice"></p>
 
-                        <!-- Form for user input -->
-                        <form id="purchaseForm" action="{{ route('orders.store')}}" method="post" onsubmit="return confirm('Maxsulotni o\'zlashtirishga ruxsat berasizmi')">
-                            @csrf
-                            <div class="row">
-                                <input type="hidden" name="product_id" id="productId">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="fullName" class="form-label">Full Name</label>
-                                        <input type="text" name="name" class="form-control" id="fullName" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="phoneNumber" class="form-label">Phone Number</label>
-                                        <input type="text" class="form-control" name="phone_number" id="phoneNumber" required placeholder="+998" :value="+998">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="weight" class="form-label">Vazn (kg):</label>
-                                        <input type="text" class="form-control" name="total_weight" id="weight" placeholder="Armatura vaznini kiriting" oninput="calculateFromWeight()" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="length" class="form-label">Uzunlik (metr):</label>
-                                        <input type="text" class="form-control" name="total_length" id="length" placeholder="Armatura uzunligini kiriting" oninput="calculateFromLength()" required>
-                                    </div>
+    <!-- Modal -->
+    <div class="modal fade" style="margin-top: 90px;" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="purchaseModalLabel">Select Option and Provide Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 id="productName"></h4>
+                    <p id="productPrice"></p>
+                    <form id="purchaseForm" action="{{ route('orders.store')}}" method="post" onsubmit="return confirm('Maxsulotni o\'zlashtirishga ruxsat berasizmi')">
+                        @csrf
+                        <div class="row">
+                            <input type="hidden" name="product_id" id="productId">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="fullName" class="form-label">Full Name</label>
+                                    <input type="text" name="name" class="form-control" id="fullName" placeholder="ismingizni kiriting" required>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                                    <input type="text" class="form-control" name="phone_number" id="phoneNumber" required placeholder="+998" :value="+998">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="weight" class="form-label">Vazn (kg):</label>
+                                    <input type="text" class="form-control" name="total_weight" id="weight" placeholder="Armatura vaznini kiriting" oninput="calculateFromWeight()" required>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="weight" disabled class="form-label">Uzunligi (Metr):</label>
+                                    <input type="text" class="form-control" name="total_length" id="length" placeholder="Armatura uzunligini kiriting" oninput="calculateFromLength()" required>
+                                </div>
+                            </div>
+                        </div>
                             <div class="mb-3">
                                 <label for="price" class="form-label">Narx (so'm):</label>
-                                <input type="text" class="form-control" name="total_price" id="price" placeholder="Armatura narxini kiriting" oninput="calculateFromPrice()" required>
+                                <input disabled type="text" class="form-control" name="total_price" id="price" placeholder="Armatura narxini kiriting" oninput="calculateFromPrice()" required>
                             </div>
-                            <div class="mt-4 text-center" style="display:none;">
-                                <textarea id="result" class="form-control" rows="4"></textarea>
-                            </div>
-                            <button type="submit" onclick="sendOrderInfo()" class="btn btn-primary mt-3">Submit</button>
-                        </form>
-                    </div>
+                        <div class="mt-4 text-center" style="display:none;">
+                            <textarea id="result" class="form-control" rows="4"></textarea>
+                        </div>
+                        <button type="submit" onclick="sendOrderInfo()" class="btn btn-primary mt-3">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <script>
-            function sendOrderInfo() {
-                const fullName = document.getElementById('fullName').value;
-                const phoneNumber = document.getElementById('phoneNumber').value;
-                const weight = document.getElementById('weight').value;
-                const length = document.getElementById('length').value;
-                const price = document.getElementById('price').value;
-                const productName = document.getElementById('productName').innerText;
+    </div>
+    <script>
+        function sendOrderInfo() {
+            const fullName = document.getElementById('fullName').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const weight = document.getElementById('weight').value;
+            const length = document.getElementById('length').value;
+            const price = document.getElementById('price').value;
+            const productName = document.getElementById('productName').innerText;
 
+            if (!fullName || !phoneNumber || !weight || !length || !price) {
+                alert('Iltimos, barcha maydonlarni to\'ldiring.');
+                return;
+            }
 
-                if (!fullName || !phoneNumber || !weight || !length || !price) {
-                    alert('Iltimos, barcha maydonlarni to\'ldiring.');
-                    return;
-                }
+            const message = `Buyurtma Yaratildi:\n\nMahsulot nomi: ${productName}\nXaridor ismi: ${fullName}\nTelefon Raqam: ${phoneNumber}\nKilogram: ${weight} kg\nUzunligi: ${length} m\nPrice: ${price} so'm`;
+            const telegramBotToken = '7217681658:AAGzxilWkKBQqgxsA9Nte_T3viv4I7c2TkY';
+            const telegramChatId = '-4236704302';
 
-                const message = `Buyurtma Yaratildi:\n\nMahsulot nomi: ${productName}\nXaridor ismi: ${fullName}\nTelefon Raqam: ${phoneNumber}\nKilogram: ${weight} kg\nUzunligi: ${length} m\nPrice: ${price} so'm`;
-                const telegramBotToken = '7217681658:AAGzxilWkKBQqgxsA9Nte_T3viv4I7c2TkY'; // Bu yerga o'zingizning bot tokeningizni qo'ying
-                const telegramChatId = '6583641407'; // Bu yerga o'zingizning chat ID ni qo'ying
+            const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+            const data = {
+                chat_id: telegramChatId,
+                text: message
+            };
 
-                const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
-                const data = {
-                    chat_id: telegramChatId,
-                    text: message
-                };
-
-                fetch(url, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.ok) {
-                            alert('Xabar yuborildi!');
-                            document.getElementById('fullName').value = '';
-                            document.getElementById('phoneNumber').value = '';
-                            document.getElementById('weight').value = '';
-                            document.getElementById('length').value = '';
-                            document.getElementById('price').value = '';
-                        } else {
-                            alert('Xatolik yuz berdi. Iltimos, qaytadan urinib ko\'ring.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Xatolik:', error);
+            fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        alert('Xabar yuborildi!');
+                        document.getElementById('fullName').value = '';
+                        document.getElementById('phoneNumber').value = '';
+                        document.getElementById('weight').value = '';
+                        document.getElementById('length').value = '';
+                        document.getElementById('price').value = '';
+                    } else {
                         alert('Xatolik yuz berdi. Iltimos, qaytadan urinib ko\'ring.');
-                    });
-            }
-        </script>
+                    }
+                })
+                .catch(error => {
+                    console.error('Xatolik:', error);
+                    alert('Xatolik yuz berdi. Iltimos, qaytadan urinib ko\'ring.');
+                });
+        }
 
-        <script>
-            // Create a products array in JavaScript
-            const products = @json($products);
+        const products = @json($products);
 
-            let currentProductPrice = 0;
-            let metr_tonna = 0;
-            let tonna_metr = 0;
-            let weightPerMeter = 0;
+        let currentProductPrice = 0;
+        let metr_tonna = 0;
+        let tonna_metr = 0;
+        let weightPerMeter = 0;
 
-            function xarid(productId) {
-                // Find the product by ID
-                const product = products.find(p => p.id === productId);
+        function xarid(productId) {
+            const product = products.find(p => p.id === productId);
 
-                // Clear input fields
-                document.getElementById('fullName').value = '';
-                document.getElementById('phoneNumber').value = '';
-                document.getElementById('length').value = '';
-                document.getElementById('weight').value = '';
-                document.getElementById('price').value = '';
-                document.getElementById('result').value = '';
+            document.getElementById('fullName').value = '';
+            document.getElementById('phoneNumber').value = '';
+            document.getElementById('length').value = '';
+            document.getElementById('weight').value = '';
+            document.getElementById('price').value = '';
+            document.getElementById('result').value = '';
 
-                // Populate modal with product details
-                document.getElementById('productId').value = productId;
-                document.getElementById('productName').innerText = product[`name_{{ $lang }}`];
-                document.getElementById('productPrice').innerText = "Price per kg: " + product.price;
+            document.getElementById('productId').value = productId;
+            document.getElementById('productName').innerText = product[`name_{{ $lang }}`];
+            document.getElementById('productPrice').innerText = "Price per tonna: " + product.price;
 
-                // Set global variable for current product price
-                currentProductPrice = product.price;
-                metr_tonna = product.metr_tonna;
-                tonna_metr = product.tonna_metr;
+            currentProductPrice = product.price;
+            metr_tonna = product.metr_tonna;
+            tonna_metr = product.tonna_metr;
+            console.log(tonna_metr);
+            console.log(metr_tonna);
 
-                // Calculate weight per meter
-                weightPerMeter = tonna_metr > 0 ? metr_tonna / tonna_metr : 0;
-            }
+            // Calculate weight per meter based on the database values
+            weightPerMeter = metr_tonna;
+        }
 
-            function calculateFromLength() {
-                const length = parseFloat(document.getElementById('length').value);
-                const weightInput = document.getElementById('weight');
-                const priceInput = document.getElementById('price');
-                const resultDiv = document.getElementById('result');
+        function calculateFromLength() {
+            const length = parseFloat(document.getElementById('length').value);
+            const weightInput = document.getElementById('weight');
+            const priceInput = document.getElementById('price');
+            const resultDiv = document.getElementById('result');
 
-                if (isNaN(length) || length <= 0) {
-                    weightInput.value = '';
-                    priceInput.value = '';
-                    resultDiv.value = 'Iltimos, to\'g\'ri uzunlik qiymatini kiriting.';
-                    return;
-                }
-
-                const totalWeight = length * weightPerMeter;
-                const totalPrice = totalWeight * currentProductPrice;
-
-                weightInput.value = totalWeight.toFixed(2);
-                priceInput.value = totalPrice.toFixed(2);
-                resultDiv.value = `Umumiy vazn: ${totalWeight.toFixed(2)} kg\nUmumiy narx: ${totalPrice.toFixed(2)} so'm`;
+            if (isNaN(length) || length <= 0 || weightPerMeter === 0) {
+                weightInput.value = '';
+                priceInput.value = '';
+                resultDiv.value = 'Iltimos, to\'g\'ri uzunlik qiymatini kiriting.';
+                return;
             }
 
-            function calculateFromWeight() {
-                const weight = parseFloat(document.getElementById('weight').value);
-                const lengthInput = document.getElementById('length');
-                const priceInput = document.getElementById('price');
-                const resultDiv = document.getElementById('result');
+            const totalWeight = length * weightPerMeter;
+            const totalPrice = totalWeight * currentProductPrice/1000;
+            const formattedPrice = totalPrice.toLocaleString('uz-UZ', { style: 'currency', currency: 'UZS' });
 
-                if (isNaN(weight) || weight <= 0) {
-                    lengthInput.value = '';
-                    priceInput.value = '';
-                    resultDiv.value = 'Iltimos, to\'g\'ri vazn qiymatini kiriting.';
-                    return;
-                }
 
-                const totalLength = weightPerMeter > 0 ? weight / weightPerMeter : 0;
-                const totalPrice = weight * currentProductPrice;
+            weightInput.value = totalWeight;
+            priceInput.value = formattedPrice;
+            resultDiv.value = `Umumiy vazn: ${totalWeight.toFixed(2)} kg\nUmumiy narx: ${totalPrice.toFixed(2)} so'm`;
+            console.log(`Calculated from Length: ${length}m, Weight: ${totalWeight}kg, Price: ${totalPrice}so'm`);
+        }
 
-                lengthInput.value = totalLength.toFixed(2);
-                priceInput.value = totalPrice.toFixed(2);
-                resultDiv.value = `Umumiy uzunlik: ${totalLength.toFixed(2)} metr\nUmumiy narx: ${totalPrice.toFixed(2)} so'm`;
+        function calculateFromWeight() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const lengthInput = document.getElementById('length');
+            const priceInput = document.getElementById('price');
+            const resultDiv = document.getElementById('result');
+
+            if (isNaN(weight) || weight <= 0 || weightPerMeter === 0) {
+                lengthInput.value = '';
+                priceInput.value = '';
+                resultDiv.value = 'Iltimos, to\'g\'ri vazn qiymatini kiriting.';
+                return;
             }
 
-            function calculateFromPrice() {
-                const price = parseFloat(document.getElementById('price').value);
-                const lengthInput = document.getElementById('length');
-                const weightInput = document.getElementById('weight');
-                const resultDiv = document.getElementById('result');
+            const totalLength = weight / weightPerMeter;
+            const totalPrice = weight * currentProductPrice/1000;
+            const formattedPrice = totalPrice.toLocaleString('uz-UZ', { style: 'currency', currency: 'UZS' });
+           console.log(formattedPrice);
 
-                if (isNaN(price) || price <= 0) {
-                    lengthInput.value = '';
-                    weightInput.value = '';
-                    resultDiv.value = 'Iltimos, to\'g\'ri narx qiymatini kiriting.';
-                    return;
-                }
+            lengthInput.value = totalLength.toFixed(2);
+            priceInput.value = formattedPrice;
+            resultDiv.value = `Umumiy uzunlik: ${totalLength.toFixed(2)} metr\nUmumiy narx: ${formattedPrice.toFixed(2)} so'm`;
 
-                const totalWeight = currentProductPrice > 0 ? price / currentProductPrice : 0;
-                const totalLength = weightPerMeter > 0 ? totalWeight / weightPerMeter : 0;
+            console.log(`Calculated from Weight: ${weight}kg, Length: ${totalLength}m, Price: ${formattedPrice}so'm`);
+        }
 
-                weightInput.value = totalWeight.toFixed(2);
-                lengthInput.value = totalLength.toFixed(2);
-                resultDiv.value = `Umumiy vazn: ${totalWeight.toFixed(2)} kg\nUmumiy uzunlik: ${totalLength.toFixed(2)} metr`;
+        function calculateFromPrice() {
+            const price = parseFloat(document.getElementById('price').value);
+            const lengthInput = document.getElementById('length');
+            const weightInput = document.getElementById('weight');
+            const resultDiv = document.getElementById('result');
+
+            if (isNaN(price) || price <= 0 || currentProductPrice === 0) {
+                lengthInput.value = '';
+                weightInput.value = '';
+                resultDiv.value = 'Iltimos, to\'g\'ri narx qiymatini kiriting.';
+                return;
             }
-        </script>
+
+            // const totalWeight = price / currentProductPrice;
+            const totalLength = weightPerMeter > 0 ? totalWeight / weightPerMeter : 0;
+
+            weightInput.value = totalWeight.toFixed(2);
+            lengthInput.value = totalLength.toFixed(2);
+            resultDiv.value = `Umumiy vazn: ${totalWeight.toFixed(2)} kg\nUmumiy uzunlik: ${totalLength.toFixed(2)} metr`;
+            console.log(`Calculated from Price: ${price}so'm, Weight: ${totalWeight}kg, Length: ${totalLength}m`);
+        }
+    </script>
 
 
 
 
-        {{-- Kalkulyator end --}}
 
-        <!-- footer area start  -->
-        <div class="footer_area pt-120 pb-50">
-            <div class="footer_shape">
-                <img src="/assets/img/footer/footerPattern.png" class="f-shape_one" alt="">
-                <img src="/assets/img/footer/polygonFooter.png" class="f-shape_two" alt="">
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-lg-6 col-xl-5 col-sm-7 ">
-                        <div class="footer_widget">
-                            <h4>{{ __('about')}}</h4>
-                            <p>{{ __('words.expMember') }}</p>
-                            <div class="social_contact">
-                                @foreach($contacts as $contact)
-                                <a href="{{ $contact->email }}"><svg width="20.87" height="15">
-                                        <g id="Mail_2" data-name="Mail 2" transform="translate(-163.667 -153.91)">
-                                            <path id="dfdf" data-name="Path 22" d="M181.928,153.91H166.276a2.611,2.611,0,0,0-2.609,2.609V166.3a2.611,2.611,0,0,0,2.609,2.609h15.652a2.612,2.612,0,0,0,2.609-2.609v-9.783A2.612,2.612,0,0,0,181.928,153.91Zm1.3,12.391a1.306,1.306,0,0,1-1.3,1.3H166.276a1.306,1.306,0,0,1-1.3-1.3v-9.783a1.306,1.306,0,0,1,1.3-1.3h15.652a1.306,1.306,0,0,1,1.3,1.3Z" fill="#438ff9" />
-                                            <path id="dfdeyyf" data-name="Path 23" d="M183.172,159.149a.653.653,0,0,0-.918-.092l-6.76,5.532-6.761-5.532a.652.652,0,0,0-.826,1.01l7.174,5.87a.653.653,0,0,0,.826,0l7.174-5.87A.653.653,0,0,0,183.172,159.149Z" transform="translate(-1.391 -1.739)" fill="#438ff9" />
-                                            <path id="sdfs" data-name="Path 24" d="M186.78,167.1a.652.652,0,1,0-.922.922l2.609,2.609a.652.652,0,0,0,.922-.922Z" transform="translate(-7.652 -4.522)" fill="#438ff9" />
-                                            <path id="Path_25" data-name="Path 25" d="M170.467,167.1l-2.609,2.609a.652.652,0,1,0,.922.922l2.609-2.609a.652.652,0,1,0-.922-.922Z" transform="translate(-1.391 -4.522)" fill="#438ff9" />
-                                        </g>
-                                    </svg>
-                                    {{ $contact->email }}</a>
-                                <a href="tel:{{ $contact->phone_number }}"><svg width="17.224" height="17.224" viewBox="0 0 17.224 17.224">
-                                        <g id="dfde" transform="translate(-255.083 -150.41)">
-                                            <path id="dfd" data-name="Path 26" d="M279.005,158.071a14.427,14.427,0,0,0-7.655-7.618.551.551,0,0,0-.726.316.581.581,0,0,0,.307.749,13.3,13.3,0,0,1,7.058,7.024.557.557,0,0,0,.508.339.537.537,0,0,0,.228-.051A.582.582,0,0,0,279.005,158.071Z" transform="translate(-6.747 0)" fill="#438ff9" />
-                                            <path id="dfdplgw" data-name="Path 27" d="M270.42,156.979a8.059,8.059,0,0,1,4.281,4.251.538.538,0,0,0,.492.328.52.52,0,0,0,.22-.049.561.561,0,0,0,.271-.733,9.149,9.149,0,0,0-4.858-4.825.534.534,0,0,0-.7.306A.561.561,0,0,0,270.42,156.979Z" transform="translate(-6.529 -2.394)" fill="#438ff9" />
-                                            <path id="fpokmd" data-name="Path 28" d="M269.332,161.508a1.314,1.314,0,0,0-1.985,0c-.464.46-.928.921-1.385,1.389a.315.315,0,0,1-.222.119.324.324,0,0,1-.159-.049c-.3-.164-.621-.3-.909-.476a14.4,14.4,0,0,1-3.471-3.159,8.242,8.242,0,0,1-1.244-1.993.286.286,0,0,1,.07-.367c.464-.448.917-.909,1.373-1.369a1.318,1.318,0,0,0,0-2.032c-.363-.367-.726-.725-1.088-1.092s-.745-.753-1.123-1.124a1.322,1.322,0,0,0-1.985,0c-.468.46-.917.932-1.393,1.384a2.262,2.262,0,0,0-.71,1.525,6.455,6.455,0,0,0,.5,2.781,16.893,16.893,0,0,0,3,5,18.558,18.558,0,0,0,6.147,4.809,8.889,8.889,0,0,0,3.4.991c.074,0,.147.006.219.006a2.433,2.433,0,0,0,1.923-.821c.4-.445.846-.85,1.267-1.275a1.327,1.327,0,0,0,.008-2.021Q270.451,162.618,269.332,161.508Zm1.421,3.452c-.139.14-.281.278-.424.416-.293.285-.6.579-.884.9a1.314,1.314,0,0,1-1.08.444c-.051,0-.1,0-.157,0a7.671,7.671,0,0,1-2.972-.879,17.514,17.514,0,0,1-5.776-4.52,15.7,15.7,0,0,1-2.806-4.666,5.308,5.308,0,0,1-.431-2.295,1.141,1.141,0,0,1,.362-.8c.294-.279.578-.565.862-.852.18-.182.361-.365.546-.547a.223.223,0,0,1,.4,0c.249.244.494.491.739.738l.372.373c.185.187.369.372.554.556s.356.356.536.538c.208.209.2.246,0,.44l-.19.192c-.387.39-.771.779-1.179,1.174a1.407,1.407,0,0,0-.313,1.6,9.214,9.214,0,0,0,1.41,2.269,15.454,15.454,0,0,0,3.75,3.4c.222.138.447.248.644.346.108.053.215.105.3.154a1.442,1.442,0,0,0,.716.2,1.414,1.414,0,0,0,1.031-.46c.446-.457.9-.908,1.372-1.376a.217.217,0,0,1,.392,0q1.116,1.11,2.226,2.222C270.933,164.7,270.951,164.76,270.753,164.961Z" transform="translate(0 -0.218)" fill="#438ff9" />
-                                        </g>
-                                    </svg>
-                                    {{ $contact->phone_number }}</a>
-                                @endforeach
-                            </div>
-                            @foreach($links as $link)
-                            <div class="social_link pt-25">
-                                <ul>
-                                    <li><a href="{{ $link->telegram }}"><i class="fab fa-telegram icon"></i></a></li>
-                                    <li><a href="{{ $link->facebook }}"><i class="fab fa-facebook-f icon"></i></a></li>
-                                    <li><a href="{{ $link->twitter }}"><i class="fab fa-twitter icon"></i></a></li>
-                                    <li><a href="{{ $link->instagram }}"><i class="fab fa-instagram icon"></i></a></li>
-                                    <li><a href="{{ $link->youtube }}"><i class="fab fa-youtube icon"></i></a></li>
-                                </ul>
-                            </div>
+
+
+    {{-- Kalkulyator end --}}
+
+    <!-- footer area start  -->
+    <div class="footer_area pt-120 pb-50">
+        <div class="footer_shape">
+            <img src="/assets/img/footer/footerPattern.png" class="f-shape_one" alt="">
+            <img src="/assets/img/footer/polygonFooter.png" class="f-shape_two" alt="">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-lg-6 col-xl-5 col-sm-7 ">
+                    <div class="footer_widget">
+                        <h4>{{ __('about')}}</h4>
+                        <p>{{ __('words.expMember') }}</p>
+                        <div class="social_contact">
+                            @foreach($contacts as $contact)
+                            <a href="{{ $contact->email }}"><svg width="20.87" height="15">
+                                    <g id="Mail_2" data-name="Mail 2" transform="translate(-163.667 -153.91)">
+                                        <path id="dfdf" data-name="Path 22" d="M181.928,153.91H166.276a2.611,2.611,0,0,0-2.609,2.609V166.3a2.611,2.611,0,0,0,2.609,2.609h15.652a2.612,2.612,0,0,0,2.609-2.609v-9.783A2.612,2.612,0,0,0,181.928,153.91Zm1.3,12.391a1.306,1.306,0,0,1-1.3,1.3H166.276a1.306,1.306,0,0,1-1.3-1.3v-9.783a1.306,1.306,0,0,1,1.3-1.3h15.652a1.306,1.306,0,0,1,1.3,1.3Z" fill="#438ff9" />
+                                        <path id="dfdeyyf" data-name="Path 23" d="M183.172,159.149a.653.653,0,0,0-.918-.092l-6.76,5.532-6.761-5.532a.652.652,0,0,0-.826,1.01l7.174,5.87a.653.653,0,0,0,.826,0l7.174-5.87A.653.653,0,0,0,183.172,159.149Z" transform="translate(-1.391 -1.739)" fill="#438ff9" />
+                                        <path id="sdfs" data-name="Path 24" d="M186.78,167.1a.652.652,0,1,0-.922.922l2.609,2.609a.652.652,0,0,0,.922-.922Z" transform="translate(-7.652 -4.522)" fill="#438ff9" />
+                                        <path id="Path_25" data-name="Path 25" d="M170.467,167.1l-2.609,2.609a.652.652,0,1,0,.922.922l2.609-2.609a.652.652,0,1,0-.922-.922Z" transform="translate(-1.391 -4.522)" fill="#438ff9" />
+                                    </g>
+                                </svg>
+                                {{ $contact->email }}</a>
+                            <a href="tel:{{ $contact->phone_number }}"><svg width="17.224" height="17.224" viewBox="0 0 17.224 17.224">
+                                    <g id="dfde" transform="translate(-255.083 -150.41)">
+                                        <path id="dfd" data-name="Path 26" d="M279.005,158.071a14.427,14.427,0,0,0-7.655-7.618.551.551,0,0,0-.726.316.581.581,0,0,0,.307.749,13.3,13.3,0,0,1,7.058,7.024.557.557,0,0,0,.508.339.537.537,0,0,0,.228-.051A.582.582,0,0,0,279.005,158.071Z" transform="translate(-6.747 0)" fill="#438ff9" />
+                                        <path id="dfdplgw" data-name="Path 27" d="M270.42,156.979a8.059,8.059,0,0,1,4.281,4.251.538.538,0,0,0,.492.328.52.52,0,0,0,.22-.049.561.561,0,0,0,.271-.733,9.149,9.149,0,0,0-4.858-4.825.534.534,0,0,0-.7.306A.561.561,0,0,0,270.42,156.979Z" transform="translate(-6.529 -2.394)" fill="#438ff9" />
+                                        <path id="fpokmd" data-name="Path 28" d="M269.332,161.508a1.314,1.314,0,0,0-1.985,0c-.464.46-.928.921-1.385,1.389a.315.315,0,0,1-.222.119.324.324,0,0,1-.159-.049c-.3-.164-.621-.3-.909-.476a14.4,14.4,0,0,1-3.471-3.159,8.242,8.242,0,0,1-1.244-1.993.286.286,0,0,1,.07-.367c.464-.448.917-.909,1.373-1.369a1.318,1.318,0,0,0,0-2.032c-.363-.367-.726-.725-1.088-1.092s-.745-.753-1.123-1.124a1.322,1.322,0,0,0-1.985,0c-.468.46-.917.932-1.393,1.384a2.262,2.262,0,0,0-.71,1.525,6.455,6.455,0,0,0,.5,2.781,16.893,16.893,0,0,0,3,5,18.558,18.558,0,0,0,6.147,4.809,8.889,8.889,0,0,0,3.4.991c.074,0,.147.006.219.006a2.433,2.433,0,0,0,1.923-.821c.4-.445.846-.85,1.267-1.275a1.327,1.327,0,0,0,.008-2.021Q270.451,162.618,269.332,161.508Zm1.421,3.452c-.139.14-.281.278-.424.416-.293.285-.6.579-.884.9a1.314,1.314,0,0,1-1.08.444c-.051,0-.1,0-.157,0a7.671,7.671,0,0,1-2.972-.879,17.514,17.514,0,0,1-5.776-4.52,15.7,15.7,0,0,1-2.806-4.666,5.308,5.308,0,0,1-.431-2.295,1.141,1.141,0,0,1,.362-.8c.294-.279.578-.565.862-.852.18-.182.361-.365.546-.547a.223.223,0,0,1,.4,0c.249.244.494.491.739.738l.372.373c.185.187.369.372.554.556s.356.356.536.538c.208.209.2.246,0,.44l-.19.192c-.387.39-.771.779-1.179,1.174a1.407,1.407,0,0,0-.313,1.6,9.214,9.214,0,0,0,1.41,2.269,15.454,15.454,0,0,0,3.75,3.4c.222.138.447.248.644.346.108.053.215.105.3.154a1.442,1.442,0,0,0,.716.2,1.414,1.414,0,0,0,1.031-.46c.446-.457.9-.908,1.372-1.376a.217.217,0,0,1,.392,0q1.116,1.11,2.226,2.222C270.933,164.7,270.951,164.76,270.753,164.961Z" transform="translate(0 -0.218)" fill="#438ff9" />
+                                    </g>
+                                </svg>
+                                {{ $contact->phone_number }}</a>
                             @endforeach
                         </div>
-                    </div>
-                    <div class="col-md-4 col-lg-3 col-xl-2 col-sm-5  fixed_width">
-                        <div class="widget_two">
-                            <h4>{{__('words.usefull')}} {{__('words.links')}}</h4>
+                        @foreach($links as $link)
+                        <div class="social_link pt-25">
                             <ul>
-                                <li><a href="/"><svg width="7.514" height="11.563" viewBox="0 0 7.514 11.563">
-                                            <path id="dfdfd" data-name="dfdfd" d="M261.8,353l5.369,5.053-5.369,5.053" transform="translate(-261.112 -352.271)" fill="none" stroke="rgba(43,27,154,0.55)" stroke-miterlimit="10" stroke-width="2" />
-                                        </svg>
-                                        {{__('words.home')}}</a></li>
-                                <li><a href="/about"><svg width="7.514" height="11.563" viewBox="0 0 7.514 11.563">
-                                            <path id="dfdfa" data-name="ojkj" d="M261.8,353l5.369,5.053-5.369,5.053" transform="translate(-261.112 -352.271)" fill="none" stroke="rgba(43,27,154,0.55)" stroke-miterlimit="10" stroke-width="2" />
-                                        </svg>
-                                        {{__('words.about')}}</a></li>
-                                <li><a href="{{ route('product')}}"><svg width="7.514" height="11.563">
-                                            <path id="poek" data-name="dfdsr" d="M261.8,353l5.369,5.053-5.369,5.053" transform="translate(-261.112 -352.271)" fill="none" stroke="rgba(43,27,154,0.55)" stroke-miterlimit="10" stroke-width="2" />
-                                        </svg>
-                                        {{ __('words.product') }}</a></li>
-                                <li><a href="/blog"><svg width="7.514" height="11.563" viewBox="0 0 7.514 11.563">
-                                            <path id="pkks" data-name="dfkkij" d="M261.8,353l5.369,5.053-5.369,5.053" transform="translate(-261.112 -352.271)" fill="none" stroke="rgba(43,27,154,0.55)" stroke-miterlimit="10" stroke-width="2" />
-                                        </svg>
-                                        {{__('words.blog')}}</a></li>
-
+                                <li><a href="{{ $link->telegram }}"><i class="fab fa-telegram icon"></i></a></li>
+                                <li><a href="{{ $link->facebook }}"><i class="fab fa-facebook-f icon"></i></a></li>
+                                <li><a href="{{ $link->twitter }}"><i class="fab fa-twitter icon"></i></a></li>
+                                <li><a href="{{ $link->instagram }}"><i class="fab fa-instagram icon"></i></a></li>
+                                <li><a href="{{ $link->youtube }}"><i class="fab fa-youtube icon"></i></a></li>
                             </ul>
                         </div>
+                        @endforeach
                     </div>
-                    <div class="col-md-8 col-lg-3 justify-content-end">
-                        <h4>{{__('words.contact')}}</h4>
-                        <div class="input-group mt-4 align-items-center">
-                            <input type="text" id="last_name" class="form-control" required placeholder="Name">
-                        </div>
-                        <div class="input-group mt-3 align-items-center">
-                            <input type="text" id="phone_number_footer" required class="form-control" placeholder="+998" value="+998">
-                        </div>
-                        <div class="input-group mt-3">
-                            <button type="submit" onclick="sendphone()" class="btn btn-primary form-control">Yuborish</button>
-                        </div>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-2 col-sm-5  fixed_width">
+                    <div class="widget_two">
+                        <h4>{{__('words.usefull')}} {{__('words.links')}}</h4>
+                        <ul>
+                            <li><a href="/"><svg width="7.514" height="11.563" viewBox="0 0 7.514 11.563">
+                                        <path id="dfdfd" data-name="dfdfd" d="M261.8,353l5.369,5.053-5.369,5.053" transform="translate(-261.112 -352.271)" fill="none" stroke="rgba(43,27,154,0.55)" stroke-miterlimit="10" stroke-width="2" />
+                                    </svg>
+                                    {{__('words.home')}}</a></li>
+                            <li><a href="/about"><svg width="7.514" height="11.563" viewBox="0 0 7.514 11.563">
+                                        <path id="dfdfa" data-name="ojkj" d="M261.8,353l5.369,5.053-5.369,5.053" transform="translate(-261.112 -352.271)" fill="none" stroke="rgba(43,27,154,0.55)" stroke-miterlimit="10" stroke-width="2" />
+                                    </svg>
+                                    {{__('words.about')}}</a></li>
+                            <li><a href="{{ route('product')}}"><svg width="7.514" height="11.563">
+                                        <path id="poek" data-name="dfdsr" d="M261.8,353l5.369,5.053-5.369,5.053" transform="translate(-261.112 -352.271)" fill="none" stroke="rgba(43,27,154,0.55)" stroke-miterlimit="10" stroke-width="2" />
+                                    </svg>
+                                    {{ __('words.product') }}</a></li>
+                            <li><a href="/blog"><svg width="7.514" height="11.563" viewBox="0 0 7.514 11.563">
+                                        <path id="pkks" data-name="dfkkij" d="M261.8,353l5.369,5.053-5.369,5.053" transform="translate(-261.112 -352.271)" fill="none" stroke="rgba(43,27,154,0.55)" stroke-miterlimit="10" stroke-width="2" />
+                                    </svg>
+                                    {{__('words.blog')}}</a></li>
+
+                        </ul>
                     </div>
+                </div>
+                <div class="col-md-8 col-lg-3 justify-content-end">
+                    <h4>{{__('words.contact')}}</h4>
+                    <div class="input-group mt-4 align-items-center">
+                        <input type="text" id="last_name" class="form-control" required placeholder="Name">
+                    </div>
+                    <div class="input-group mt-3 align-items-center">
+                        <input type="text" id="phone_number_footer" required class="form-control" placeholder="+998" value="+998">
+                    </div>
+                    <div class="input-group mt-3">
+                        <button type="submit" onclick="sendphone()" class="btn btn-primary form-control">Yuborish</button>
+                    </div>
+                </div>
 
-                    <script>
-                        function sendphone() {
-                            const phone_number_footer = document.getElementById('phone_number_footer').value;
-                            const last_name = document.getElementById('last_name').value;
+                <script>
+                    function sendphone() {
+                        const phone_number_footer = document.getElementById('phone_number_footer').value;
+                        const last_name = document.getElementById('last_name').value;
 
-                            if (!last_name || !phone_number_footer) {
-                                alert('Iltimos, barcha maydonlarni to\'ldiring.');
-                                return;
-                            }
-
-                            const message = `A contact form submission has been received:\n\nName: ${last_name}\nPhone Number: ${phone_number_footer}`;
-                            const telegramBotToken = '7217681658:AAGzxilWkKBQqgxsA9Nte_T3viv4I7c2TkY'; // Bu yerga o'zingizning bot tokeningizni qo'ying
-                            const telegramChatId = '6583641407'; // Bu yerga o'zingizning chat ID ni qo'ying
-
-                            const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
-                            const data = {
-                                chat_id: telegramChatId,
-                                text: message
-                            };
-
-                            fetch(url, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify(data)
-                                })
-                                .then(response => response.json())
-                                .then(data => {
-                                    if (data.ok) {
-                                        alert('Xabar yuborildi!');
-                                        document.getElementById('last_name').value = '';
-                                        document.getElementById('phone_number_footer').value = '';
-                                    } else {
-                                        alert('Xatolik yuz berdi. Iltimos, qaytadan urinib ko\'ring.');
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error('Xatolik:', error);
-                                    alert('Xatolik yuz berdi. Iltimos, qaytadan urinib ko\'ring.');
-                                });
+                        if (!last_name || !phone_number_footer) {
+                            alert('Iltimos, barcha maydonlarni to\'ldiring.');
+                            return;
                         }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <!-- footer area end  -->
 
-        <!-- copyright section  -->
-        <div class="copyright_area">
-            <div class="container">
-                <div class="row top-border align-items-center">
-                    <div class="col-md-4 col-lg-2 col-xl-4  col-sm-6">
-                        <div class="logo">
-                            <a href="/"><img src="/assets/img/logo/logo2.png" alt="site_logo"></a>
-                        </div>
+                        const message = `A contact form submission has been received:\n\nName: ${last_name}\nPhone Number: ${phone_number_footer}`;
+                        const telegramBotToken = '7217681658:AAGzxilWkKBQqgxsA9Nte_T3viv4I7c2TkY'; // Bu yerga o'zingizning bot tokeningizni qo'ying
+                        const telegramChatId = '6583641407'; // Bu yerga o'zingizning chat ID ni qo'ying
+
+                        const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+                        const data = {
+                            chat_id: telegramChatId,
+                            text: message
+                        };
+
+                        fetch(url, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data)
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.ok) {
+                                    alert('Xabar yuborildi!');
+                                    document.getElementById('last_name').value = '';
+                                    document.getElementById('phone_number_footer').value = '';
+                                } else {
+                                    alert('Xatolik yuz berdi. Iltimos, qaytadan urinib ko\'ring.');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Xatolik:', error);
+                                alert('Xatolik yuz berdi. Iltimos, qaytadan urinib ko\'ring.');
+                            });
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+    <!-- footer area end  -->
+
+    <!-- copyright section  -->
+    <div class="copyright_area">
+        <div class="container">
+            <div class="row top-border align-items-center">
+                <div class="col-md-4 col-lg-2 col-xl-4  col-sm-6">
+                    <div class="logo">
+                        <a href="/"><img src="/assets/img/logo/logo2.png" alt="site_logo"></a>
                     </div>
-                    <div class="col-md-8 col-lg-8 col-xl-4 col-sm-6 text-center">
-                        <div class="copyright_text">
-                            <p>&copy; 2024 Megagold.uz by <a href="https://dora.uz"><span>Dora Dev.</span></a>. All Rights Reserved.</p>
-                        </div>
+                </div>
+                <div class="col-md-8 col-lg-8 col-xl-4 col-sm-6 text-center">
+                    <div class="copyright_text">
+                        <p>&copy; 2024 Megagold.uz by <a href="https://dora.uz"><span>Dora Dev.</span></a>. All Rights Reserved.</p>
                     </div>
-                    <div class="col-md-4 col-xl-4 text-end d-none d-xl-block">
-                        <div class="copyright_menu">
-                            <ul>
-                                <li><a href="#">+998 (93) 512 5324</a></li>
-                                <li><a href="#">+998 (93) 513 5324</a></li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="col-md-4 col-xl-4 text-end d-none d-xl-block">
+                    <div class="copyright_menu">
+                        <ul>
+                            <li><a href="#">+998 (93) 512 5324</a></li>
+                            <li><a href="#">+998 (93) 513 5324</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
 </x-layouts.main>

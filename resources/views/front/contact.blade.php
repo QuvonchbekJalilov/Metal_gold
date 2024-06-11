@@ -95,53 +95,7 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
 
 <!-- breadcrumb_area end  -->
 
-<!-- contact area start  -->
-<div class="contact_area pt-110 mb-120">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-xl-6">
-                <div class="contact_content">
-                    <h2 class="title">Have a project in mind? <br>
-                        <span class="underline">Let’s talk.</span>
-                    </h2>
-                    <p>Lorem ipsum dolor sit amet consec tetur adipisicing sed do eiusmod tempor incid idunt labore
-                        dolore magna aliqua enim ad minim veniam. quis nostrud exercitation ullamco laboris.</p>
-                </div>
-            </div>
-            <div class="col-md-12 col-xl-6">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="officeAddress">
-                            <h3 class="mb-20 officeAddress__title">USA office</h3>
-                            <ul>
-                                <li> <img src="./assets/img/contact/location.png" alt="">Cecilia
-                                    Chapman. </li>
-                                <li><img src="./assets/img/contact/mail.png" alt="">info.cliper@email.com</li>
-                                <li><img src="./assets/img/contact/Phone.png" alt="">+1 225
-                                    365 03
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="officeAddress">
-                            <h3 class="mb-20 officeAddress__title">UK office</h3>
-                            <ul>
-                                <li> <img src="./assets/img/contact/location.png" alt="">Cecilia
-                                    Chapman </li>
-                                <li><img src="./assets/img/contact/mail.png" alt="">info.cliper@email.com</li>
-                                <li><img src="./assets/img/contact/Phone.png" alt="">+1 225
-                                    365 03
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- contact area end  -->
+
 
 <!-- map  -->
     <div class="google-map contact-map mb-100">
@@ -283,7 +237,7 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
 
                         const message = `A contact form submission has been received:\n\nName: ${last_name}\nPhone Number: ${phone_number_footer}`;
                         const telegramBotToken = '7217681658:AAGzxilWkKBQqgxsA9Nte_T3viv4I7c2TkY'; // Bu yerga o'zingizning bot tokeningizni qo'ying
-                        const telegramChatId = '6583641407'; // Bu yerga o'zingizning chat ID ni qo'ying
+                        const telegramChatId = '-4236704302'; // Bu yerga o'zingizning chat ID ni qo'ying
 
                         const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
                         const data = {

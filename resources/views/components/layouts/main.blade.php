@@ -10,11 +10,11 @@ $contacts = \App\Models\Contact::latest()->first();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Cliper - Cliper Photo Studio HTML5 Template</title>
+    <title>Mega Metal Gold</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/fav.png">
+    <link rel="shortcut icon" type="/assets/img/Shapemgm2-01.png" href="/assets/img/Shapemgm2-01.png">
 
     <!-- Place favicon.ico in the root directory -->
 
@@ -94,7 +94,7 @@ $contacts = \App\Models\Contact::latest()->first();
                 <div class="row align-items-center">
                     <div class="col-md-2">
                         <div class="logo">
-                            <a href="/"> <img src="/assets/img/logo/log.png" alt="site_logo"></a>
+                            <a href="/"> <img src="/assets/img/MegaGoldMetall2-01.png" style="width: 95px;" alt="site_logo"></a>
                         </div>
                     </div>
                     <div class="col-md-10">
@@ -120,18 +120,18 @@ $contacts = \App\Models\Contact::latest()->first();
                                     <div class="quote">
 
                                     </div>
-                                    <div class="lan_currencey mx-4">
+                                    <div class="lan_currencey mx-2">
                                         <ul>
-                                            <li><a href="#">@if($lang == 'en') Language @endif @if($lang == 'ru') язык @endif @if($lang == 'uz') Til @endif:</a></li>
+                                            <li><a href="#">@if($lang == 'en') English @endif @if($lang == 'ru') Русский @endif @if($lang == 'uz') Uzbekcha @endif:</a></li>
                                             <li id="showcurrencey"><a href="javascript:void();">
-                                                    @if($lang == 'en') En @endif
+                                                    @if($lang == 'en') Eng @endif
                                                     @if($lang == 'ru') Руc @endif
                                                     @if($lang == 'uz') Uzb @endif
                                                 </a><i class="far fa-chevron-down"></i>
                                                 <ul class="currencey">
                                                     <li><a class="dropdown-item" href="/uz">Uzb</a></li>
                                                     <li><a class="dropdown-item" href="/ru">Руc</a></li>
-                                                    <li><a class="dropdown-item" href="/en">En</a></li>
+                                                    <li><a class="dropdown-item" href="/en">Eng</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -152,7 +152,7 @@ $contacts = \App\Models\Contact::latest()->first();
     <div class="sidebar">
         <div class="wrap d-flex">
             <div class="logo mb-30">
-                <img src="/assets/img/slide/whitelogo.png" alt="">
+                <img src="/assets/img/MegaGoldMetall2-01.png" alt="">
             </div>
             <div class="close_btn_sidebar">
                 <span class="searchClose sidebarClose"> <i class="fal fa-times-circle"></i></span>
@@ -214,7 +214,7 @@ $contacts = \App\Models\Contact::latest()->first();
             <div class="row align-items-center justify-content-between">
                 <div class="col-2">
                     <div class="mobile-logo">
-                        <a href="/"><img src="/assets/img/logo/logo.png" alt=""></a>
+                        <a href="/"><img src="/assets/img/MegaGoldMetall2-01.png" style="height:50px !important;" alt=""></a>
                     </div>
                 </div>
                 <div class="col-8 text-end">
@@ -232,8 +232,8 @@ $contacts = \App\Models\Contact::latest()->first();
         <div class="side-info">
             <button class="side-info-close"><i class="fal fa-times"></i></button>
             <div class="side__logo mb-25">
-                <a href="/">
-                    <img src="assets/img/logo/log.png" alt="logo" />
+                <a href="{{ route('index')}}">
+                    <img src="/assets/img/MegaGoldMetall2-01.png" alt="logo" />
                 </a>
             </div>
             <div class="mobile-menu"></div>
@@ -291,7 +291,7 @@ $contacts = \App\Models\Contact::latest()->first();
 
         const message = `A contact form submission has been received:\n\nName: ${name}\nPhone Number: ${phone_number}\nMessage: ${messagesText}`;
         const telegramBotToken = '7217681658:AAGzxilWkKBQqgxsA9Nte_T3viv4I7c2TkY'; // Bu yerga o'zingizning bot tokeningizni qo'ying
-        const telegramChatId = '6583641407'; // Bu yerga o'zingizning chat ID ni qo'ying
+        const telegramChatId = '-4236704302'; // Bu yerga o'zingizning chat ID ni qo'ying
 
         const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
         const data = {

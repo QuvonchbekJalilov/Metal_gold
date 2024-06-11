@@ -76,7 +76,6 @@ Route::middleware(['checkRole:admin', 'auth'])->group(function () {
         Route::resource('/profile', UserController::class);
         Route::resource('orders', OrderController::class);
         Route::post('/orders/{order}/update-status', [OrderController::class, 'updateStatus'])->name('orders.update-status');
-        Route::get('/search', [CategoryController::class, 'search'])->name('search');
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     });
 });

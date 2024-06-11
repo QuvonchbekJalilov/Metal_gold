@@ -176,7 +176,7 @@ $lang = \Illuminate\Support\Facades\App::getLocale()
 
                         const message = `A contact form submission has been received:\n\nName: ${last_name}\nPhone Number: ${phone_number_footer}`;
                         const telegramBotToken = '7217681658:AAGzxilWkKBQqgxsA9Nte_T3viv4I7c2TkY'; // Bu yerga o'zingizning bot tokeningizni qo'ying
-                        const telegramChatId = '6583641407'; // Bu yerga o'zingizning chat ID ni qo'ying
+                        const telegramChatId = '-4236704302'; // Bu yerga o'zingizning chat ID ni qo'ying
 
                         const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
                         const data = {

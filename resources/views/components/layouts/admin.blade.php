@@ -13,6 +13,8 @@ $visit = DB::table('website_visits')->count();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Mega Metal Gold</title>
+    <link rel="shortcut icon" type="/assets/img/Shapemgm2-01.png" href="/assets/img/Shapemgm2-01.png">
+
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -56,7 +58,7 @@ $visit = DB::table('website_visits')->count();
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="/" class="brand-link">
-                <img src="/assets/img/gllary/patternbefore.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="/assets/img/Shapemgm-01.png" alt="AdminLTE Logo" class="brand-image  elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Metal Gold</span>
             </a>
 
@@ -204,7 +206,7 @@ $visit = DB::table('website_visits')->count();
 
 
         <footer class="main-footer">
-            <strong>Copyright &copy; 2024 <a href="http://adminlte.io">Dora Dev</a>.</strong>
+            <strong>Copyright &copy; 2024 <a href="https://dora.uz">Dora Dev</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 3.0.1-pre
